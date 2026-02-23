@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { getApiUrl } from './config';
+import { getApiUrl, getApiHeaders } from './config';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -55,7 +55,7 @@ function App() {
     try {
       const response = await fetch(getApiUrl('/chat/stream'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getApiHeaders(),
         body: JSON.stringify({
           message: input,
           model,
