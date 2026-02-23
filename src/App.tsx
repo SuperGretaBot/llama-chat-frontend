@@ -12,7 +12,7 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [model, setModel] = useState('llama3.2');
+  const [model, setModel] = useState('deepseek-coder:6.7b');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -158,11 +158,11 @@ function App() {
             onChange={(e) => setModel(e.target.value)}
             className="model-select"
           >
+            <option value="deepseek-coder:6.7b">💻 DeepSeek Coder (6.7B)</option>
             <option value="llama3.2">🦙 Llama 3.2 (3B)</option>
             <option value="llama3.2:1b">🦙 Llama 3.2 (1B)</option>
             <option value="mistral">🌀 Mistral</option>
             <option value="codellama">💻 Code Llama</option>
-            <option value="phi3">🔬 Phi-3</option>
           </select>
         </div>
 

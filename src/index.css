@@ -230,18 +230,19 @@ body {
   transform: translateY(-2px);
 }
 
-/* Messages */
+/* Messages - WhatsApp/Telegram Style */
 .messages {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .message {
   display: flex;
-  gap: 16px;
-  padding: 24px;
-  border-radius: 16px;
-  margin-bottom: 16px;
+  flex-direction: column;
+  max-width: 85%;
   animation: fadeIn 0.3s ease;
 }
 
@@ -250,65 +251,79 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* User messages - right side */
 .message.user {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05));
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  align-self: flex-end;
 }
 
+.message.user .message-content {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-radius: 20px 20px 4px 20px;
+}
+
+/* Assistant messages - left side */
 .message.assistant {
-  background: var(--bg-secondary);
+  align-self: flex-start;
+}
+
+.message.assistant .message-content {
+  background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
+  border-radius: 20px 20px 20px 4px;
 }
 
 .message-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.message.user .message-avatar {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-}
-
-.message.assistant .message-avatar {
-  background: linear-gradient(135deg, #10b981, #059669);
+  display: none;
 }
 
 .message-content {
-  flex: 1;
+  padding: 12px 16px;
   min-width: 0;
 }
 
 .message-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.message.user .message-header {
+  justify-content: flex-end;
 }
 
 .message-author {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.message.assistant .message-author {
+  color: var(--accent);
 }
 
 .message-time {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
+}
+
+.message.user .message-time {
+  color: rgba(255,255,255,0.6);
 }
 
 .message-body {
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .message-body p {
   white-space: pre-wrap;
   word-break: break-word;
+  margin: 0;
+}
+
+.message.user .message-body {
+  color: #fff;
 }
 
 /* Markdown Styles */
